@@ -151,7 +151,7 @@ public class NakovForwardServer
         if (serversProperty == null )
            throw new Exception("The server list can not be empty.");
         try {
-           ArrayList servers = new ArrayList();
+           ArrayList<ServerDescription> servers = new ArrayList<ServerDescription>();
            StringTokenizer stServers = new StringTokenizer(serversProperty,",");
            while (stServers.hasMoreTokens()) {
                String serverAndPort = stServers.nextToken().trim();
@@ -207,7 +207,7 @@ public class NakovForwardServer
     /**
      * Starts the forward server - binds on a given port and starts serving
      */
-    public void startForwardServer()
+   public void startForwardServer()
     throws Exception
     {
         // Bind server on given TCP port
@@ -235,6 +235,7 @@ public class NakovForwardServer
                ForwardServerClientThread forwardThread = new ForwardServerClientThread(this, clientSocket);
                forwardThread.start();
            } catch (Exception e) {
+               serverSocket.close();
                throw new Exception("Unexpected error.\n" + e.toString());
            }
         }
