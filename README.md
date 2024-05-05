@@ -65,5 +65,9 @@ Using load balancing algorithm is specified by following line:
 
     java NakovForwardServer
 
+# Running the server (java archive)
+
+    java -jar NakovForwardServer.jar
+
 # ngrok
 Finally, if you have more advanced needs, you might find this localhost tunelling software useful: https://ngrok.com
